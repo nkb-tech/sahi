@@ -65,7 +65,12 @@ class Yolov8DetectionModel(DetectionModel):
         if self.model is None:
             raise ValueError("Model is not loaded, load it by calling .load_model()")
 
-        kwargs = {"cfg": self.config_path, "verbose": False, "conf": self.confidence_threshold, "device": self.device}
+        kwargs = {"cfg": self.config_path,
+                  "verbose": False,
+                  "conf": self.confidence_threshold,
+                  "device": self.device,
+                  "agnostic_nms": self.agnostic_nms,
+                  "augment": self.augment}
 
         if self.image_size is not None:
             kwargs = {"imgsz": self.image_size, **kwargs}

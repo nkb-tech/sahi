@@ -22,6 +22,8 @@ class DetectionModel:
         category_remapping: Optional[Dict] = None,
         load_at_init: bool = True,
         image_size: int = None,
+        agnostic_nms: bool = False,
+        augment: bool = False,
     ):
         """
         Init object detection/instance segmentation model.
@@ -56,6 +58,8 @@ class DetectionModel:
         self.image_size = image_size
         self._original_predictions = None
         self._object_prediction_list_per_image = None
+        self.agnostic_nms = agnostic_nms
+        self.augment = augment
 
         self.set_device()
 
